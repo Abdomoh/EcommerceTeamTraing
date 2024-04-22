@@ -30,9 +30,7 @@ class UserController extends Controller
         $input = $request->validate([
             'email' => 'required',
             'password' => 'required|'
-
         ]);
-
         $user = User::where('email', $input['email'])->first();
         if (!$user || !Hash::check($input['password'], $user->password)) {
 
@@ -40,10 +38,8 @@ class UserController extends Controller
                 'message' => 'Invalid Credentials'
             ], 401);
         } else {
-
             $token = $user->createToken($user->name . 'AuthToken')->plainTextToken;
-
-            return $this->success(['access_token' => $token], '');
+            return $this->success([$user,'role' => $user->role,'access_token' => $token], '');
         }
     }
 

@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Api\UserController;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Routing\RouteRegistrar;
+use App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,19 +17,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::group(['prefix' => 'auth'], function () {
-    Route::post('register',[UserController::class,'register']);
-    Route::post('login',[UserController::class,'login']);
-    Route::post('logout',[UserController::class,'logout'])->middleware('auth:sanctum');
-});*/
-
-
-Route::controller(UserController::class)->prefix('auth')->group(
-function(){
-    Route::post('register','register');
-    Route::post('login','login');
-    Route::post('logout','logout')->middleware('auth:sanctum');
-});
+Route::controller(UserController::class)->prefix('auth')->middleware(['DbBackup'])->group(
+    function () {
+        Route::get('/users', function () {
+            return User::all();
+        })->middleware(['auth:sanctum'],'admin');
+        Route::post('register', 'register');
+        Route::post('login', 'login');
+        Route::post('logout', 'logout')->middleware('auth:sanctum');
+    }
+);
 
 
 
