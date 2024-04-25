@@ -21,12 +21,14 @@ Route::controller(UserController::class)->prefix('auth')->middleware(['DbBackup'
     function () {
         Route::get('/users', function () {
             return User::all();
-        })->middleware(['auth:sanctum'],'admin');
+        })->middleware(['auth:sanctum','admin']);
         Route::post('register', 'register');
         Route::post('login', 'login');
         Route::post('logout', 'logout')->middleware('auth:sanctum');
     }
 );
+
+
 
 
 

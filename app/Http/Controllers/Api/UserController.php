@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Traits\ResponseTrait;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
+use App\Traits\ApiResponser;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    use ResponseTrait;
+    use ApiResponser;
     public function register(UserRequest $request)
     {
         $validated = $request->validated();
@@ -39,7 +39,7 @@ class UserController extends Controller
             ], 401);
         } else {
             $token = $user->createToken($user->name . 'AuthToken')->plainTextToken;
-            return $this->success([$user,'role' => $user->role,'access_token' => $token], '');
+            return $this->success([$user, 'role' => $user->role, 'access_token' => $token], '');
         }
     }
 

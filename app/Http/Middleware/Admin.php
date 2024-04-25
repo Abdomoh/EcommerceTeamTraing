@@ -17,12 +17,16 @@ class Admin
      */
     public function handle(Request $request, Closure $next, ...$roles)
     {
-        $user = $request->user;
+        $user = Auth()->user();
 
-        if (!in_array($user->role, $roles)) {
+        if ($user->role == 'admin') {
             //dd($request->user()->role = 'admin');
             return $next($request);
+   
+           
         }
         return response()->json(['message' => 'Unauthorized'], 403);
+  
+      
     }
 }
