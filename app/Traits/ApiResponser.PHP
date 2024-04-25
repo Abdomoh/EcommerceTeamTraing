@@ -3,6 +3,8 @@
 namespace App\Traits;
 
 use Carbon\Carbon;
+use App\Models\User;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,12 @@ trait ApiResponser
             'message' => $message,
             'data' => $data
         ], $code);
+    }
+
+    public function getAllUser()
+    {
+        $user = User::all();
+        //return $user;
     }
 
     /**
