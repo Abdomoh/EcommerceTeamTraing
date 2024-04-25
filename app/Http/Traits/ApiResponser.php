@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ApiResponser;
+namespace App\Http\ApiResponser;
 
 use Carbon\Carbon;
 
