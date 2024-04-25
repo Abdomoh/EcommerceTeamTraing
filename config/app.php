@@ -181,9 +181,11 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Yousefpackage\LaraBackup\Providers\LaraBackupServiceProvider::class,
+        /*Yousefpackage\LaraBackup\Providers\LaraBackupServiceProvider::class,
         Yousefpackage\LaraBackup\Providers\BackupServiceProvider::class,
         Yousefpackage\LaraBackup\Providers\RouteServiceProvider::class,
+
+        */
 
 
         /*
