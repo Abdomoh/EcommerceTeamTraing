@@ -22,11 +22,7 @@ class Admin
         if ($user->role == 'admin') {
             //dd($request->user()->role = 'admin');
             return $next($request);
-   
-           
         }
         return response()->json(['message' => 'Unauthorized'], 403);
-  
-      
     }
 }
