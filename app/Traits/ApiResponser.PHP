@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ApiResponser;
+namespace App\Traits;
 
 use Carbon\Carbon;
 

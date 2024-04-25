@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers\Api;
 
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 use App\Traits\ApiResponser;
+//use App\Http\Traits\ApiResponser;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
     use ApiResponser;
     public function register(UserRequest $request)
     {
