@@ -20,9 +20,7 @@ use Illuminate\Support\Facades\Artisan;
 
 Route::controller(UserController::class)->prefix('auth')->middleware(['DbBackup'])->group(
     function () {
-        Route::get('/users', function () {
-            return User::all();
-        })->middleware(['auth:sanctum', 'admin']);
+        Route::get('/users','index')->middleware(['auth:sanctum', 'admin']);
         Route::post('register', 'register');
         Route::post('login', 'login');
         Route::post('logout', 'logout')->middleware('auth:sanctum');

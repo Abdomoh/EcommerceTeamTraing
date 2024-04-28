@@ -8,11 +8,19 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 use App\Traits\ApiResponser;
-//use App\Http\Traits\ApiResponser;
 use Illuminate\Support\Facades\Hash;
+use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
 {
+
+    public function index()
+    {
+        return  DataTables::of(User::query()->orderBy('created_at', 'DESC'))
+            ->editColumn('id', '{{$id}}')
+            ->rawColumns(['created_at'])
+            ->make(true);
+    }
 
     use ApiResponser;
     public function register(UserRequest $request)
