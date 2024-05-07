@@ -29,6 +29,11 @@ class User extends Authenticatable
         'role'
     ];
 
+    public function posts()
+    {
+        return $this->hasMany('App\Models\Post','user_id');
+    }
+
 
 
     /**

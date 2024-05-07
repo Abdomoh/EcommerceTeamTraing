@@ -32,7 +32,7 @@ class UserController extends Controller
             'password' => Hash::make($validated['password'])
         ]);
         $token = $user->createToken($user->name . 'AuthToken')->plainTextToken;
-        return $this->success([$user, 'access_token' => $token], 'created');
+        return $this->success([$user, 'access_token' => $token], __('main.'));
     }
 
     public function login(Request $request)
@@ -58,7 +58,7 @@ class UserController extends Controller
     {
         auth()->user()->tokens()->delete();
         return response()->json([
-            "message" => "logged out"
+            "message" => __('main.log_out')
         ]);
     }
 }
