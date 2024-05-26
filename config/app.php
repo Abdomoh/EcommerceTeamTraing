@@ -200,7 +200,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Ichtrojan\Otp\OtpServiceProvider::class,
+        //Ichtrojan\Otp\OtpServiceProvider::class,
 
     ],
 
@@ -217,7 +217,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-        'Otp' => Ichtrojan\Otp\Otp::class,
+        // 'Otp' => Ichtrojan\Otp\Otp::class,
 
     ])->toArray(),
 
