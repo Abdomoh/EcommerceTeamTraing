@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Api;
 
 
 use App\Models\User;
+use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
+use App\Services\UserService;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
-use App\Traits\ApiResponser;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
+use App\Notifications\EmailVerificationNotification;
 
 class UserController extends Controller
 {
@@ -23,7 +25,7 @@ class UserController extends Controller
     }
 
     use ApiResponser;
-    public function register(UserRequest $request)
+    public function register(UserRequest $request, UserService $userService)
     {
         $validated = $request->validated();
         $user = User::create([
@@ -32,7 +34,8 @@ class UserController extends Controller
             'password' => Hash::make($validated['password'])
         ]);
         $token = $user->createToken($user->name . 'AuthToken')->plainTextToken;
-        return $this->success([$user, 'access_token' => $token], __('main.'));
+       // $user->notify(new EmailVerificationNotification());
+        return $this->success([$user, 'access_token' => $token], __('main.register_customer_is_done'));
     }
 
     public function login(Request $request)
@@ -50,7 +53,7 @@ class UserController extends Controller
             ], 401);
         } else {
             $token = $user->createToken($user->name . 'AuthToken')->plainTextToken;
-            return $this->success([$user, 'role' => $user->role, 'access_token' => $token], '');
+            return $this->success([$user, 'role' => $user->role, 'access_token' => $token], __('main.login_authenticated_is_done'));
         }
     }
 

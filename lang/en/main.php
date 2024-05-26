@@ -56,6 +56,7 @@ return [
     'product_deleted' => 'Product Deleted Successfully',
     'items_ot_exist' => 'Product Not Found',
     'login_authenticated_is_done' => 'LOgin Authenticated is Done !',
+    'register_created_successfully' =>'Register Created Successfully',
     'password_reset_successfully' => 'Password Reset Successfully !',
     'email_or_password_encorrect' => 'Email or Password not corrected !',
     'not_add_to_cart' => 'The product has not been added to the cart',
